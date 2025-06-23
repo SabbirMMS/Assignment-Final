@@ -67,9 +67,9 @@ export function UserNav({ setIsAuthenticated }: UserNavProps) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem  onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />
-          <span onClick={handleLogout}>Log out</span>
+          <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
