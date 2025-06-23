@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,18 +9,27 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { LayoutDashboard, LogOut, Star } from 'lucide-react';
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LayoutDashboard, LogOut, Star } from "lucide-react";
 
-export function UserNav() {
+type UserNavProps = {
+  setIsAuthenticated: (value: boolean) => void;
+};
+
+export function UserNav({ setIsAuthenticated }: UserNavProps) {
   // Mock user data. In a real app, this would come from a session provider.
   const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-    role: 'user', // or 'landlord'
+    name: "Sabbir MMS",
+    email: "mr.sabbirmms@gmail.com",
+    image: "https://avatars.githubusercontent.com/u/120826117?s=400&u=8021a78bd2f5f53df76d4a23d9e752fafcee835e&v=4",
+    role: "user", // or 'landlord'
+  };
+
+  const handleLogout = () => {
+    // Implement logout logic here
+    setIsAuthenticated(false);
   };
 
   return (
@@ -37,7 +46,9 @@ export function UserNav() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{user.name}</p>
-            <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
+            <p className="text-xs leading-none text-muted-foreground">
+              {user.email}
+            </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -58,7 +69,7 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
+          <span onClick={handleLogout}>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

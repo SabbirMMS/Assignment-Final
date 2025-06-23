@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { UserNav } from '@/components/auth/UserNav';
 import { Home, Building2 } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Header() {
   // Mock authentication state. In a real app, this would come from a session provider.
-  const isAuthenticated = true;
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -31,7 +32,7 @@ export default function Header() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <ThemeToggle />
           {isAuthenticated ? (
-            <UserNav />
+            <UserNav setIsAuthenticated={setIsAuthenticated}/>
           ) : (
             <div className="hidden space-x-2 md:block">
               <Button asChild variant="ghost">
